@@ -1,0 +1,10 @@
+Seu nome: Rafael Claumann Bernardes
+
+1) SELECT * FROM en_filme ORDER BY data_lancamento ASC LIMIT 1
+
+2) SELECT c.*, COUNT(a.*) AS alugueis 
+	FROM en_cliente c LEFT JOIN en_aluguel a 
+		ON (a.id_cliente = c.id_cliente) GROUP BY c.id_cliente
+			ORDER BY alugueis ASC
+			
+3) 

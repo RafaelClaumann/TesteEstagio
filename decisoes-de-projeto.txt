@@ -1,0 +1,11 @@
+Sobrescrita do método toString nas classes do pacote entidade para facilitar a visualização
+das informações.
+
+Inibir a deleção de filmes/clientes que estejam relacionados a algum aluguel.
+
+A exclusão de uma aluguel é encarada como devolução dos filmes alugados, por isso os relacionamentos
+envolvidos com este aluguel também são deletados.
+
+Cuidado com a consistencia dos dados presentes no banco.
+
+Criação de um menu em modo texto com as opções para inserir/alterar/remover dados do sistema.
