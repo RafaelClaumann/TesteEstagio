@@ -56,7 +56,7 @@ public class Filme {
 	}
 
 	public String toString() {
-		return "Filme: " + this.getNome() + ", Descrição: " + this.getDescricao() + ", Lançamento: "
+		return "ID:" + this.getIdFilme() +", Filme: " + this.getNome() + ", Descrição: " + this.getDescricao() + ", Lançamento: "
 				+ this.getDataLancamento();
 	}
 }

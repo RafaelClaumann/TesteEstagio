@@ -34,13 +34,15 @@ public class ClientView {
 		}
 	}
 
-	private static void editarCliente(Connection conn, ClienteDAO clienteDAO) {
+		private static void editarCliente(Connection conn, ClienteDAO clienteDAO) {
 		Scanner scanner = new Scanner(System.in);
+		listarClientes(conn);
+		Cliente cliente;
+		
 		try {
-			listarClientes(conn);
 
 			System.out.printf("Insira o ID do cliente: ");
-			Cliente cliente = clienteDAO.find(conn, scanner.nextInt());
+			cliente = clienteDAO.find(conn, scanner.nextInt());
 
 			System.out.printf("Insira o nome do cliente: ");
 			cliente.setNome(scanner.nextLine());
@@ -51,22 +53,11 @@ public class ClientView {
 		}
 	}
 
-	private static void deletarCliente(Connection conn, ClienteDAO clienteDAO) {
-		try {
-			listarClientes(conn);
-
-			System.out.printf("Insira o ID do cliente: ");
-			clienteDAO.delete(conn, new Scanner(System.in).nextInt());
-		} catch (Exception e) {
-			System.out.println("Cliente não existe ou possui alugueis em aberto, impossível deletar!");
-		}
-	}
-
 	static void listarClientes(Connection conn) {
 		System.out.println("\n------------ CLIENTES CADASTRADOS --------------");
-		List<Cliente> clientes;
+		Collection<Cliente> clientes;
 		try {
-			clientes = (List<Cliente>) new ClienteDAOImpl().list(conn);
+			clientes = new ClienteDAOImpl().list(conn);
 			for (Cliente cliente : clientes) {
 				System.out.println(cliente.toString());
 			}
