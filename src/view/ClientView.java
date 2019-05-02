@@ -34,7 +34,7 @@ public class ClientView {
 		}
 	}
 
-		private static void editarCliente(Connection conn, ClienteDAO clienteDAO) {
+    private static void editarCliente(Connection conn, ClienteDAO clienteDAO) {
 		Scanner scanner = new Scanner(System.in);
 		listarClientes(conn);
 		Cliente cliente;
@@ -50,6 +50,17 @@ public class ClientView {
 			clienteDAO.edit(conn, cliente);
 		} catch (Exception e) {
 			System.out.println("Ops, algo deu errado!");
+		}
+	}
+	
+    private static void deletarCliente(Connection conn, ClienteDAO clienteDAO) {
+		try {
+			listarClientes(conn);
+
+			System.out.printf("Insira o ID do cliente: ");
+			clienteDAO.delete(conn, new Scanner(System.in).nextInt());
+		} catch (Exception e) {
+			System.out.println("Cliente não existe ou possui alugueis em aberto, impossível deletar!");
 		}
 	}
 
