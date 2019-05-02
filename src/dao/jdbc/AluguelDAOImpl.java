@@ -61,14 +61,12 @@ public class AluguelDAOImpl implements AluguelDAO {
 		myStmt.setDouble(3, aluguel.getValor());
 		myStmt.setInt(4, aluguel.getIdAluguel());
 		myStmt.execute();
-		conn.commit();
 
 		myStmt = conn.prepareStatement(
 				"DELETE FROM re_aluguel_filme USING en_aluguel " + " WHERE re_aluguel_filme.id_aluguel = (?)");
 
 		myStmt.setInt(1, aluguel.getIdAluguel());
 		myStmt.execute();
-		conn.commit();
 
 		myStmt = conn
 				.prepareStatement("INSERT INTO public.re_aluguel_filme (id_filme, id_aluguel) " + " VALUES (?, ?)");
